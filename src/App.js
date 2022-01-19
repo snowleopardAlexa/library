@@ -33,6 +33,17 @@ function App() {
   }
 }
 
+// delete book
+const deleteBook = async (id) => {
+try {
+  await fetch(`/api/movies/${id}`, { method: 'DELETE'})
+
+
+} catch (err) {
+  console.log(err)
+  }
+}
+
   return (
     <div className="container">
       <div className="row justify-content-center">
