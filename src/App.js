@@ -74,6 +74,7 @@ function App() {
                   <th>id</th>
                   <th>name</th>
                   <th>year</th>
+                  <th>actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -82,6 +83,12 @@ function App() {
                     <td>{id}</td>
                     <td>{name}</td>
                     <td>{year}</td>
+                    <td>
+                      <button 
+                        className="btn btn-danger"
+                        onClick={() => deleteBook(id)}
+                      >Delete</button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
