@@ -1,4 +1,4 @@
-import { createServer } from "miragejs"
+import { createServer } from "miragejs";
 
 createServer({
   routes() {
@@ -6,10 +6,10 @@ createServer({
 
     this.get("/books", () => {
       return {
-        movies: [
-          { id: 1, name: "Zoo", year: 2019 },
+        books: [
+          { id: 1, name: "Zoo", year: 2010 },
           { id: 2, name: "Witcher: The Sword of Destiny", year: 2014 },
-          { id: 3, name: "Harry Potter and the Chambers of Secrets", year: 2017 },
+          { id: 3, name: "Anna Karenina", year: 1878 },
         ],
       }
     })

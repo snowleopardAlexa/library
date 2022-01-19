@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import './App.css';
+
+import { useEffect, useState } from 'react';
 
 function App() {
-
   const [books, setBooks] = useState(null)
+
   useEffect(() => {
     fetch('/api/books')
-    .then(res => res.json())
-    .then(json => setBooks(json.books))
-    .catch(err => console.log(err))
+      .then((res) => res.json())
+      .then((json) => setBooks(json.books))
+      .catch((err) => console.log(err))
   }, [])
 
   return (
@@ -16,6 +16,7 @@ function App() {
       <div className="row justify-content-center">
         <div className="col">
           <h1 className="fw-normal text-center my-3">Books</h1>
+          <div className="my-4"></div>
           {books?.length > 0 ? (
             <table className="table">
               <thead>
@@ -23,6 +24,7 @@ function App() {
                   <th>id</th>
                   <th>name</th>
                   <th>year</th>
+                  <th>actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,13 +37,13 @@ function App() {
                 ))}
               </tbody>
             </table>
-           ) : (  
-            <p>No books</p>
+          ) : (
+          <p>No movies</p>
           )}
         </div>
-      </div>  
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
