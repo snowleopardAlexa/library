@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 function App() {
   const [books, setBooks] = useState(null)
 
+  const [name, setName] = useState('')
+  const [year, setYear] = useState('')
+
   useEffect(() => {
     fetch('/api/books')
       .then((res) => res.json())
@@ -17,7 +20,33 @@ function App() {
         <div className="col">
           <h1 className="fw-normal text-center my-3">Books</h1>
           <div className="my-4">
-            
+            <form onSubmit={submitForm}>
+               <div className="row">
+                 <div className="col">
+                   <input 
+                    type="text" 
+                    className="form-control" 
+                    placeholder="Name" 
+                    value={name}
+                    onChange={e => setName(e.target.value)} 
+                    />
+                 </div>
+                 <div className="col">
+                   <input 
+                    type="number" 
+                    className="form-control" 
+                    placeholder="Year" 
+                    value={year}
+                    onChange={e => setYear(e.target.value)} 
+                    />
+                 </div>
+                 <div className="col">
+                   <button type="submit" className="btn btn-success">
+                     Create
+                   </button>
+                 </div>
+               </div>
+            </form>
           </div>
           {books?.length > 0 ? (
             <table className="table">
