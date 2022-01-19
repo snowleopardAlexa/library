@@ -16,7 +16,9 @@ function App() {
       <div className="row justify-content-center">
         <div className="col">
           <h1 className="fw-normal text-center my-3">Books</h1>
-          <div className="my-4"></div>
+          <div className="my-4">
+            
+          </div>
           {books?.length > 0 ? (
             <table className="table">
               <thead>
@@ -24,7 +26,6 @@ function App() {
                   <th>id</th>
                   <th>name</th>
                   <th>year</th>
-                  <th>actions</th>
                 </tr>
               </thead>
               <tbody>
