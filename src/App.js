@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+
+  const [books, setBooks] = useState(null)
+  useEffect(() => {
+    fetch('/api/books')
+    .then(res => res.json())
+    .then(json => setBooks(json.books))
+    .catch(err => console.log(err))
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col">
+
+        </div>
+      </div>  
     </div>
   );
 }
