@@ -9,7 +9,7 @@ function App() {
     .then(res => res.json())
     .then(json => setBooks(json.books))
     .catch(err => console.log(err))
-  })
+  }, [])
 
   return (
     <div className="container">
