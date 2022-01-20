@@ -41,7 +41,7 @@ function App() {
           <div className="my-4">
             <form onSubmit={submitForm}>
                <div className="row">
-                 <div className="col">
+                 <div className="col-5">
                    <input 
                     type="text" 
                     className="form-control" 
@@ -50,7 +50,7 @@ function App() {
                     onChange={e => setName(e.target.value)} 
                     />
                  </div>
-                 <div className="col">
+                 <div className="col-5">
                    <input 
                     type="number" 
                     className="form-control" 
@@ -59,7 +59,7 @@ function App() {
                     onChange={e => setYear(e.target.value)} 
                     />
                  </div>
-                 <div className="col">
+                 <div className="col-2">
                    <button type="submit" className="btn btn-success">
                      Create
                    </button>

@@ -1,4 +1,4 @@
-import { createServer } from "miragejs";
+import { createServer, Model } from "miragejs";
 
 let books = [
   { id: 1, name: "Zoo", year: 2010 },
@@ -6,7 +6,11 @@ let books = [
   { id: 3, name: "Anna Karenina", year: 1878 },
 ]
 
-createServer({
+// model
+createServer ({
+  models: {
+    movie: Model
+  },
   routes() {
     this.namespace = "api"
 
