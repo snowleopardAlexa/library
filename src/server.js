@@ -1,15 +1,14 @@
 import { createServer, Model } from "miragejs";
 
-let books = [
-  { id: 1, name: "Zoo", year: 2010 },
-  { id: 2, name: "Witcher: The Sword of Destiny", year: 2014 },
-  { id: 3, name: "Anna Karenina", year: 1878 },
-]
-
 // model
 createServer ({
   models: {
     movie: Model
+  },
+  seeds(server) {
+    server.create("book", { name: "Zoo", year: 2010 })
+    server.create("book", { name: "Witcher: The Sword of Destiny", year: 2014 })
+    server.create("book", { name: "Anna Karenina", year: 1878 })
   },
   routes() {
     this.namespace = "api"
