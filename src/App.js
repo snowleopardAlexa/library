@@ -14,6 +14,25 @@ function App() {
       .catch((err) => console.log(err))
   }, [])
 
+  // submit form function
+  const submitForm = async (event) => {
+    event.preventDefault()
+
+    try {
+      const res = await fetch('/api/books', { 
+      method: 'POST', 
+      body: JSON.stringify({name, year}),
+    })
+    const json = await res.json()
+
+    setBooks([...books, json.book])
+    setName('')
+    setYear('')
+  } catch (err) {
+    console.log(err)
+  }
+}
+
   return (
     <div className="container">
       <div className="row justify-content-center">
