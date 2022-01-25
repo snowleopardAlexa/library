@@ -1,4 +1,4 @@
-
+import './App.css';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
 // delete book
 const deleteBook = async (id) => {
 try {
-  await fetch(`/api/movies/${id}`, { method: 'DELETE'})
+  await fetch(`/api/books/${id}`, { method: 'DELETE'})
   setBooks(books.filter(b => b.id !== id))
 
 } catch (err) {
