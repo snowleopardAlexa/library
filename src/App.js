@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [books, setBooks] = useState(null)
+  const [bookId, setBookId] = useState(null)
+  const [updating, setUpdating] = useState(false)
 
   const [name, setName] = useState('')
   const [year, setYear] = useState('')
@@ -44,6 +46,16 @@ try {
   }
 }
 
+// update book
+const setBookToUpdate = (id) => {
+  const book = books.find((b) => b.id === id)
+  if (!book) return
+  setUpdating(true)
+  setBookId(book.id)
+  setName(book.name)
+  setYear(book.year)
+}
+
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -71,8 +83,8 @@ try {
                     />
                  </div>
                  <div className="col-2">
-                   <button type="submit" className="btn btn-success">
-                     Create
+                   <button type="submit" className="btn-create">
+                     {updating ? 'Update' : 'Create' }
                    </button>
                  </div>
                </div>
@@ -95,8 +107,12 @@ try {
                     <td>{name}</td>
                     <td>{year}</td>
                     <td>
+                    <button 
+                        className="btn-warning me-3"
+                        onClick={() => setBookToUpdate(id)}
+                      >Update</button>
                       <button 
-                        className="btn btn-danger"
+                        className="btn-delete"
                         onClick={() => deleteBook(id)}
                       >Delete</button>
                     </td>

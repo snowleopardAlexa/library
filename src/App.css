@@ -4,10 +4,21 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.btn-success {
-  background-color: greenyellow;
+.btn-create, .btn-delete, .btn-warning {
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  font-weight: bold;
 }
 
-.btn-danger {
-  background-color: rgb(204, 8, 8);
+.btn-create {
+  background-color: rgb(104, 170, 5);
+}
+
+.btn-delete {
+  background-color: rgb(194, 0, 0);
+}
+
+.btn-warning {
+  background-color: rgb(194, 55, 0);
 }
