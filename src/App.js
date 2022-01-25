@@ -37,7 +37,7 @@ function App() {
 const deleteBook = async (id) => {
 try {
   await fetch(`/api/movies/${id}`, { method: 'DELETE'})
-
+  setBooks(books.filter(b => b.id !== id))
 
 } catch (err) {
   console.log(err)
