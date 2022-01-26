@@ -1,9 +1,14 @@
-import { createServer, Model } from "miragejs";
+import { belongsTo, createServer, hasMany, Model } from "miragejs";
 
 // model
 createServer ({
   models: {
-    book: Model
+    book: Model.extend({
+      characters: hasMany(),
+    }),
+    character: Model.extend({
+      book: belongsTo(),
+    }),
   },
   seeds(server) {
     server.create("book", { name: "Zoo", year: 2010 })
