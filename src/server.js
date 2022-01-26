@@ -12,16 +12,6 @@ createServer ({
   },
   routes() {
     this.namespace = "api"
-
-    this.get("/books", (schema, request) => {
-      return schema.books.all()
-    })
-    
-    this.get("/books/:id", (schema, request) => {
-      let id = request.params.id
-    
-      return schema.books.find(id)
-    })
     
     this.post("/books", (schema, request) => {
       let attrs = JSON.parse(request.requestBody)
@@ -37,10 +27,10 @@ createServer ({
       return book.update(newAttrs)
     })
     
-    this.delete("/books/:id", (schema, request) => {
-      let id = request.params.id
+    // shortcuts for get and delete
+    this.get('/books')
+    this.get('/books/:id')
+    this.del('/books/:id')
     
-      return schema.books.find(id).destroy()
-    })
   },
 })
