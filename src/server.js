@@ -13,17 +13,34 @@ createServer ({
   routes() {
     this.namespace = "api"
 
-    // response to a POST request
+    this.get("/books", (schema, request) => {
+      return schema.books.all()
+    })
+    
+    this.get("/books/:id", (schema, request) => {
+      let id = request.params.id
+    
+      return schema.books.find(id)
+    })
+    
     this.post("/books", (schema, request) => {
       let attrs = JSON.parse(request.requestBody)
-      attrs.id = Math.floor(Math.random() * 100)
-      books.push(attrs)
-
-      return { book: attrs }
+    
+      return schema.books.create(attrs)
     })
-
-    this.get("/books", (schema, request) => {
-      return schema.books.all() 
+    
+    this.patch("/books/:id", (schema, request) => {
+      let newAttrs = JSON.parse(request.requestBody)
+      let id = request.params.id
+      let book = schema.books.find(id)
+    
+      return book.update(newAttrs)
+    })
+    
+    this.delete("/books/:id", (schema, request) => {
+      let id = request.params.id
+    
+      return schema.books.find(id).destroy()
     })
   },
 })
