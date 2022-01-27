@@ -3,7 +3,7 @@ import { createServer, Model } from "miragejs";
 // model
 createServer ({
   models: {
-    movie: Model
+    book: Model
   },
   seeds(server) {
     server.create("book", { name: "Zoo", year: 2010 })
