@@ -16,23 +16,57 @@ function App() {
       .catch((err) => console.log(err))
   }, [])
 
-  // submit form function
-  const submitForm = async (event) => {
-    event.preventDefault()
+// create book function 
+const createBook = async() => {
 
-    try {
-      const res = await fetch('/api/books', { 
-      method: 'POST', 
-      body: JSON.stringify({name, year}),
-    })
+  try {
+    const res = await fetch('/api/books', { 
+    method: 'POST', 
+    body: JSON.stringify({name, year}),
+  })
     const json = await res.json()
 
     setBooks([...books, json.book])
     setName('')
     setYear('')
-  } catch (err) {
+}   catch (err) {
     console.log(err)
   }
+}  
+
+// update book function 
+const updateBook = async() => {
+
+  try {
+    const res = await fetch(`/api/books/${bookId}`, { 
+    method: 'PATCH', 
+    body: JSON.stringify({name, year}),
+  })
+    const json = await res.json()
+
+    const booksCopy = [...books]
+    const index = books.findIndex(b => b.id === bookId)
+    booksCopy[index] = json.book
+
+    setBooks(booksCopy)
+    setName('')
+    setYear('')
+    setUpdating(false)
+    setBookId(null)
+}   catch (err) {
+    console.log(err)
+  }
+} 
+
+// submit form function
+  const submitForm = async (event) => {
+    event.preventDefault()
+
+    if(updating) {
+      updateBook()
+    } else {
+      createBook()
+    }
 }
 
 // delete book
