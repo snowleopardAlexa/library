@@ -22,10 +22,8 @@ createServer ({
       return { book: attrs }
     })
 
-    this.get("/books", () => {
-      return {
-        books
-      }
+    this.get("/books", (schema, request) => {
+      return schema.books.all() 
     })
   },
 })
