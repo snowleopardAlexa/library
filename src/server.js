@@ -1,9 +1,14 @@
-import { createServer, Model } from "miragejs";
+import { belongsTo, createServer, hasMany, Model } from "miragejs";
 
 // model
 createServer ({
   models: {
-    book: Model
+    book: Model.extend({
+      characters: hasMany(),
+    }),
+    character: Model.extend({
+      book: belongsTo(),
+    }),
   },
   seeds(server) {
     server.create("book", { name: "Zoo", year: 2010 })
@@ -12,16 +17,6 @@ createServer ({
   },
   routes() {
     this.namespace = "api"
-
-    this.get("/books", (schema, request) => {
-      return schema.books.all()
-    })
-    
-    this.get("/books/:id", (schema, request) => {
-      let id = request.params.id
-    
-      return schema.books.find(id)
-    })
     
     this.post("/books", (schema, request) => {
       let attrs = JSON.parse(request.requestBody)
@@ -37,10 +32,10 @@ createServer ({
       return book.update(newAttrs)
     })
     
-    this.delete("/books/:id", (schema, request) => {
-      let id = request.params.id
+    // shortcuts for get and delete
+    this.get('/books')
+    this.get('/books/:id')
+    this.del('/books/:id')
     
-      return schema.books.find(id).destroy()
-    })
   },
 })
