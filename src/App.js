@@ -165,8 +165,10 @@ const setBookToUpdate = (id) => {
                 ))}
               </tbody>
             </table>
+          ) : books ? (
+            <p>No books</p>
           ) : (
-          <p>No movies</p>
+            <p>Loading...</p>
           )}
         </div>
       </div>
