@@ -90,6 +90,15 @@ const setBookToUpdate = (id) => {
   setYear(book.year)
 }
 
+// fetch characters
+const fetchCharacters = async(id) => {
+  try {
+    const res = await fetch(`/api/books/${id}/characters`)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
   return (
     <div className="container">
       <div className="row justify-content-center">
