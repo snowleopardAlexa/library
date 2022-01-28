@@ -16,9 +16,10 @@ createServer ({
     const oz = server.create("character", { name: "Jackson Oz"})
     const mitch = server.create("character", { name: "Mitch Morgan"})
     const hermy = server.create("character", { name: "Hermionie Granger"})
-    server.create("book", { name: "Zoo", year: 2010 })
-    server.create("book", { name: "Witcher: The Sword of Destiny", year: 2014 })
-    server.create("book", { name: "Anna Karenina", year: 1878 })
+
+    server.create("book", { name: "Zoo", year: 2010, characters: [oz, mitch] })
+    server.create("book", { name: "Witcher: The Sword of Destiny", year: 2014, characters: [geralt, yen] })
+    server.create("book", { name: "Anna Karenina", year: 1878, characters: [hermy] })
   },
   routes() {
     this.namespace = "api"
