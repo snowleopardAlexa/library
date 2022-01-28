@@ -42,6 +42,12 @@ createServer ({
     this.get('/books')
     this.get('/books/:id')
     this.del('/books/:id')
+
+    this.get('/books/:id/characters', (schema, request) => {
+      let book = schema.books.find(request.params.id)
+
+      return book.actors
+    })
     
   },
 })
