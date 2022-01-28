@@ -9,6 +9,8 @@ function App() {
   const [name, setName] = useState('')
   const [year, setYear] = useState('')
 
+  const [characters, setCharacters] = useState(null)
+
   useEffect(() => {
     fetch('/api/books')
       .then((res) => res.json())
@@ -94,6 +96,10 @@ const setBookToUpdate = (id) => {
 const fetchCharacters = async(id) => {
   try {
     const res = await fetch(`/api/books/${id}/characters`)
+    const json = await res.json()
+
+    setCharacters(json.characters)
+
   } catch (err) {
     console.log(err)
   }
@@ -157,7 +163,7 @@ const fetchCharacters = async(id) => {
                     </button>
                     <button
                         type="button"
-                        className="btn btn-info me-3"
+                        className="btn-info me-3"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
                         onClick={() => fetchCharacters(id)}
@@ -194,7 +200,9 @@ const fetchCharacters = async(id) => {
               ></button>
             </div>
             <div className="modal-body">
-            
+            {characters?.map(character => (
+              <p key={character.id}>{character.name}</p>
+            ))}
             </div>
           </div>
         </div>

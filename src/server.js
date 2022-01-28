@@ -46,7 +46,7 @@ createServer ({
     this.get('/books/:id/characters', (schema, request) => {
       let book = schema.books.find(request.params.id)
 
-      return book.actors
+      return book.characters
     })
     
   },
