@@ -4,7 +4,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.btn-create, .btn-delete, .btn-warning {
+.btn-create, .btn-delete, .btn-warning, .btn-info {
   border: none;
   padding: 8px 16px;
   color: white;
@@ -21,4 +21,8 @@
 
 .btn-warning {
   background-color: rgb(194, 55, 0);
+}
+
+.btn-info {
+  background-color: rgb(6, 180, 180);
 }

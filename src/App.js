@@ -9,6 +9,8 @@ function App() {
   const [name, setName] = useState('')
   const [year, setYear] = useState('')
 
+  const [characters, setCharacters] = useState(null)
+
   useEffect(() => {
     fetch('/api/books')
       .then((res) => res.json())
@@ -90,6 +92,19 @@ const setBookToUpdate = (id) => {
   setYear(book.year)
 }
 
+// fetch characters
+const fetchCharacters = async(id) => {
+  try {
+    const res = await fetch(`/api/books/${id}/characters`)
+    const json = await res.json()
+
+    setCharacters(json.characters)
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -144,19 +159,52 @@ const setBookToUpdate = (id) => {
                     <button 
                         className="btn-warning me-3"
                         onClick={() => setBookToUpdate(id)}
-                      >Update</button>
-                      <button 
+                      >Update
+                    </button>
+                    <button
+                        type="button"
+                        className="btn-info me-3"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        onClick={() => fetchCharacters(id)}
+                      >
+                      Characters
+                      </button>
+                    <button 
                         className="btn-delete"
                         onClick={() => deleteBook(id)}
-                      >Delete</button>
+                    >Delete
+                    </button>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+          ) : books ? (
+            <p>No books</p>
           ) : (
-          <p>No movies</p>
+            <p>Loading...</p>
           )}
+        </div>
+      </div>
+      <div className="modal fade" tabindex="-1" id="exampleModal">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Characters</h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+            {characters?.map(character => (
+              <p key={character.id}>{character.name}</p>
+            ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

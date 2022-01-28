@@ -11,9 +11,15 @@ createServer ({
     }),
   },
   seeds(server) {
-    server.create("book", { name: "Zoo", year: 2010 })
-    server.create("book", { name: "Witcher: The Sword of Destiny", year: 2014 })
-    server.create("book", { name: "Anna Karenina", year: 1878 })
+    const geralt = server.create("character", { name: "Geralt from Rivia"})
+    const yen = server.create("character", { name: "Yennefer from Vengerberg"})
+    const oz = server.create("character", { name: "Jackson Oz"})
+    const mitch = server.create("character", { name: "Mitch Morgan"})
+    const anna = server.create("character", { name: "Anna Karenina"})
+
+    server.create("book", { name: "Zoo", year: 2010, characters: [oz, mitch] })
+    server.create("book", { name: "Witcher: The Sword of Destiny", year: 2014, characters: [geralt, yen] })
+    server.create("book", { name: "Anna Karenina", year: 1878, characters: [anna] })
   },
   routes() {
     this.namespace = "api"
@@ -36,6 +42,12 @@ createServer ({
     this.get('/books')
     this.get('/books/:id')
     this.del('/books/:id')
+
+    this.get('/books/:id/characters', (schema, request) => {
+      let book = schema.books.find(request.params.id)
+
+      return book.characters
+    })
     
   },
 })
