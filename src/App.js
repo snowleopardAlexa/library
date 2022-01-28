@@ -144,11 +144,22 @@ const setBookToUpdate = (id) => {
                     <button 
                         className="btn-warning me-3"
                         onClick={() => setBookToUpdate(id)}
-                      >Update</button>
-                      <button 
+                      >Update
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-info me-3"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        onClick={() => fetchCharacters(id)}
+                      >
+                      Characters
+                      </button>
+                    <button 
                         className="btn-delete"
                         onClick={() => deleteBook(id)}
-                      >Delete</button>
+                    >Delete
+                    </button>
                     </td>
                   </tr>
                 ))}
