@@ -11,11 +11,11 @@ createServer ({
     }),
   },
   seeds(server) {
-    const character = server.create("character", { name: "Geralt from Rivia"})
-    const character = server.create("character", { name: "Yennefer from Vengerberg"})
-    const character = server.create("character", { name: "Jackson Oz"})
-    const character = server.create("character", { name: "Mitch Morgan"})
-    const character = server.create("character", { name: "Hermionie Granger"})
+    const geralt = server.create("character", { name: "Geralt from Rivia"})
+    const yen = server.create("character", { name: "Yennefer from Vengerberg"})
+    const oz = server.create("character", { name: "Jackson Oz"})
+    const mitch = server.create("character", { name: "Mitch Morgan"})
+    const hermy = server.create("character", { name: "Hermionie Granger"})
     server.create("book", { name: "Zoo", year: 2010 })
     server.create("book", { name: "Witcher: The Sword of Destiny", year: 2014 })
     server.create("book", { name: "Anna Karenina", year: 1878 })
