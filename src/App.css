@@ -26,3 +26,27 @@
 .btn-info {
   background-color: rgb(6, 180, 180);
 }
+
+form {
+  width: 100%;
+}
+
+@media only screen and (max-width: 764px) {
+  .btn-create, .btn-delete, .btn-warning, .btn-info  {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    line-height: 20px;
+    margin-top: 5px;
+  }
+
+  form {
+    width: 80%;
+  }
+
+  table {
+    font-size: 1rem;
+  }
+}
+
+
+

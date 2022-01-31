@@ -149,7 +149,7 @@ const fetchCharacters = async(id) => {
                   <th>actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="body">
                 {books.map(({ id, name, year }) => (
                   <tr key={id}>
                     <td>{id}</td>
